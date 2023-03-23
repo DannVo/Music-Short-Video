@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.musicapplication"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug{
+            buildConfigField 'String', 'VIDEO_LINK', '"https://raw.githubusercontent.com/DannVo/Music-Short-Video/main/video_json.json"'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures{
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'com.google.firebase:firebase-firestore:24.4.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.4'
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
+    //LOTTIE ANIMATION, SHIMMER LAYOUT, GSON
+    implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.google.code.gson:gson:2.10'
+
+    //CIRCLE IMAGE VIEW
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    //EXOPLAYER
+    implementation 'com.google.android.exoplayer:exoplayer:2.17.0'
+
+    //AUDIO VISUALIZER
+    implementation 'io.github.gautamchibde:audiovisualizer:2.2.5'
+    implementation 'com.github.amarjain07:StickyScrollView:1.0.3'
+
+    //PALETTE, BLUR IMAGE VIEW
+    implementation 'androidx.palette:palette:1.0.0-alpha1'
+    implementation 'com.github.jgabrielfreitas:BlurImageView:1.0.1'
+
+    //VOLLEY, GLIDE
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
+
+
+
+}

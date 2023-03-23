@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:background="#FED049"
+            android:paddingBottom="20dp"
+
+            >
+
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="191dp"
+                android:layout_height="210dp"
+                android:layout_gravity="center_horizontal"
+
+                android:src="@drawable/logo_app2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:background="@drawable/wave_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="WELLCOME BACK!"
+            android:textAlignment="center"
+            android:textColor="@color/tomato"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="62dp"-->
+        <!--            android:layout_marginTop="36.7dp"-->
+        <!--            android:layout_marginRight="62dp"-->
+        <!--            android:background="@drawable/rounded_border_5dp">-->
+
+        <!--            &lt;!&ndash; INPUT &ndash;&gt;-->
+        <!--            <EditText-->
+        <!--                android:id="@+id/etLogUsername"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_toRightOf="@+id/ivsEmail"-->
+        <!--                android:background="@android:color/transparent"-->
+        <!--                android:fontFamily="@font/poppins_regular"-->
+        <!--                android:hint="Username"-->
+        <!--                android:inputType="textPersonName"-->
+        <!--                android:maxLines="1"-->
+        <!--                android:paddingLeft="17dp"-->
+        <!--                android:paddingTop="15dp"-->
+        <!--                android:paddingBottom="15dp"-->
+        <!--                android:textCursorDrawable="@drawable/cursor_color"-->
+        <!--                android:textSize="12sp" />-->
+
+        <!--            &lt;!&ndash; ICON &ndash;&gt;-->
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivsEmail"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_centerVertical="true"-->
+        <!--                android:layout_marginLeft="17dp"-->
+        <!--                android:src="@drawable/ic_baseline_account_circle_24" />-->
+
+        <!--        </RelativeLayout>-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="52dp"
+            android:layout_marginTop="36.7dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/tomato"
+                app:boxStrokeWidth="0dp"
+                android:hint="Username"
+                app:hintTextColor="@color/grey_text"
+
+                app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
+                app:startIconTint="@color/tomato">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLogUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/light_tomato"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:textColor="@color/tomato"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="52dp"
+            android:layout_marginTop="12.7dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/tomato"
+                app:boxStrokeWidth="0dp"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/tomato"
+                android:hint="Password"
+                app:hintTextColor="@color/grey_text"
+                app:startIconDrawable="@drawable/ic_password"
+                app:startIconTint="@color/tomato">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLogPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/light_tomato"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="textPassword"
+                    android:paddingTop="4dp"
+                    android:textColor="@color/tomato"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/RL_password"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="62dp"-->
+        <!--            android:layout_marginTop="12.7dp"-->
+        <!--            android:layout_marginRight="62dp"-->
+        <!--            android:background="@drawable/rounded_border_5dp">-->
+
+        <!-- INPUT -->
+        <!--            <EditText-->
+        <!--                android:id="@+id/etLogPass"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_toRightOf="@+id/ivsPass"-->
+        <!--                android:background="@android:color/transparent"-->
+        <!--                android:fontFamily="@font/poppins_regular"-->
+        <!--                android:hint="Password"-->
+        <!--                android:inputType="textPassword"-->
+        <!--                android:maxLength="10"-->
+        <!--                android:maxLines="1"-->
+        <!--                android:paddingLeft="17dp"-->
+        <!--                android:paddingTop="15dp"-->
+        <!--                android:paddingBottom="15dp"-->
+        <!--                android:textCursorDrawable="@drawable/cursor_color"-->
+        <!--                android:textSize="12sp" />-->
+
+        <!--            &lt;!&ndash; ICON &ndash;&gt;-->
+        <!--            <ImageView-->
+        <!--                android:id="@+id/ivsPass"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_centerVertical="true"-->
+        <!--                android:layout_marginLeft="17dp"-->
+        <!--                android:src="@drawable/ic_baseline_lock_24" />-->
+
+
+        <!--        </RelativeLayout>-->
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="52dp"
+            android:layout_marginTop="18.7dp"
+            android:background="@color/tomato">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:text="Login"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Forgot password ?"
+                android:textColor="@color/tomato"
+                android:textSize="10.5sp" />
+
+            <TextView
+                android:id="@+id/tvRegis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="REGISTER"
+                android:textColor="@color/tomato"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_login"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13.7dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_horizontal"
+                android:text="or"
+                android:textColor="#FBA5A5"
+                android:textSize="13.3sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="26.7dp"
+                android:layout_height="26.7dp"
+                android:src="@drawable/fb" />
+
+            <ImageView
+                android:layout_width="26.7dp"
+                android:layout_height="26.7dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/instagram" />
+
+            <ImageView
+                android:layout_width="26.7dp"
+                android:layout_height="26.7dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/twitter" />
+
+            <ImageView
+                android:id="@+id/ivGoogle"
+                android:layout_width="26.7dp"
+                android:layout_height="26.7dp"
+                android:src="@drawable/linkedin" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

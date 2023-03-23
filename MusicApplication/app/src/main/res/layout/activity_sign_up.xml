@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:id="@+id/layout_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:background="#FED049"
+                android:paddingBottom="20dp"
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="191dp"
+                    android:layout_height="210dp"
+                    android:layout_gravity="center_horizontal"
+
+                    android:src="@drawable/logo_app2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+
+                android:background="@drawable/wave_bg" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="REGISTER"
+                android:textAlignment="center"
+                android:textColor="@color/tomato"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="62dp"-->
+<!--                android:layout_marginTop="36.7dp"-->
+<!--                android:layout_marginRight="62dp"-->
+<!--                android:background="@drawable/rounded_border">-->
+
+<!--                &lt;!&ndash; INPUT &ndash;&gt;-->
+<!--                <EditText-->
+<!--                    android:id="@+id/etSigName"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/ivsName"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:hint="Name"-->
+<!--                    android:inputType="textPersonName"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="17dp"-->
+<!--                    android:paddingTop="15dp"-->
+<!--                    android:paddingBottom="15dp"-->
+<!--                    android:textCursorDrawable="@drawable/cursor_color"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                &lt;!&ndash; ICON &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/ivsName"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginLeft="17dp"-->
+<!--                    android:src="@drawable/ic_baseline_person_24" />-->
+
+<!--            </RelativeLayout>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="62dp"-->
+<!--                android:layout_marginTop="12.7dp"-->
+<!--                android:layout_marginRight="62dp"-->
+<!--                android:background="@drawable/rounded_border">-->
+
+<!--                &lt;!&ndash; INPUT &ndash;&gt;-->
+<!--                <EditText-->
+<!--                    android:id="@+id/etSigEmail"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/ivsEmail"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:hint="Email"-->
+<!--                    android:inputType="textEmailAddress"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="17dp"-->
+<!--                    android:paddingTop="15dp"-->
+<!--                    android:paddingBottom="15dp"-->
+<!--                    android:textCursorDrawable="@drawable/cursor_color"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                &lt;!&ndash; ICON &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/ivsEmail"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginLeft="17dp"-->
+<!--                    android:src="@drawable/ic_baseline_email_24" />-->
+
+<!--            </RelativeLayout>-->
+
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="62dp"-->
+<!--                android:layout_marginTop="12.7dp"-->
+<!--                android:layout_marginRight="62dp"-->
+<!--                android:background="@drawable/rounded_border">-->
+
+<!--                &lt;!&ndash; INPUT &ndash;&gt;-->
+<!--                <EditText-->
+<!--                    android:id="@+id/etSigUser"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/ivsUsername"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:hint="Username"-->
+<!--                    android:inputType="textPersonName"-->
+<!--                    android:maxLength="10"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="17dp"-->
+<!--                    android:paddingTop="15dp"-->
+<!--                    android:paddingBottom="15dp"-->
+<!--                    android:textCursorDrawable="@drawable/cursor_color"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                &lt;!&ndash; ICON &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/ivsUsername"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginLeft="17dp"-->
+<!--                    android:src="@drawable/ic_baseline_person_pin_24" />-->
+
+<!--            </RelativeLayout>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="62dp"-->
+<!--                android:layout_marginTop="12.7dp"-->
+<!--                android:layout_marginRight="62dp"-->
+<!--                android:background="@drawable/rounded_border">-->
+
+<!--                &lt;!&ndash; INPUT &ndash;&gt;-->
+<!--                <EditText-->
+<!--                    android:id="@+id/etSigPass"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_toRightOf="@+id/ivsPass"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:hint="Password"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:maxLength="10"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:paddingLeft="17dp"-->
+<!--                    android:paddingTop="15dp"-->
+<!--                    android:paddingBottom="15dp"-->
+<!--                    android:textCursorDrawable="@drawable/cursor_color"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                &lt;!&ndash; ICON &ndash;&gt;-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/ivsPass"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginLeft="17dp"-->
+<!--                    android:src="@drawable/ic_baseline_lock_24" />-->
+
+<!--            </RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="52dp"
+                android:layout_marginTop="30.7dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/tomato"
+                    app:boxStrokeWidth="0dp"
+                    android:hint="Full Name"
+                    app:startIconDrawable="@drawable/ic_baseline_person_24"
+                    app:startIconTint="@color/tomato">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSigName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+
+                        android:backgroundTint="@color/light_tomato"
+                        android:paddingTop="4dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/tomato" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="52dp"
+                android:layout_marginTop="12.7dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/tomato"
+                    app:boxStrokeWidth="0dp"
+                    android:hint="Email"
+                    app:startIconDrawable="@drawable/ic_baseline_email_24"
+                    app:startIconTint="@color/tomato">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSigEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:backgroundTint="@color/light_tomato"
+                        android:paddingTop="3dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/tomato" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="52dp"
+                android:layout_marginTop="12.7dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/tomato"
+                    app:boxStrokeWidth="0dp"
+                    android:hint="Username"
+                    app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
+                    app:startIconTint="@color/tomato">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSigUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:backgroundTint="@color/light_tomato"
+                        android:paddingTop="3dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/tomato" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="52dp"
+                android:layout_marginTop="12.7dp">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tlPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/tomato"
+                    app:boxStrokeWidth="0dp"
+                    android:hint="Password"
+                    app:startIconDrawable="@drawable/ic_password"
+                    app:startIconTint="@color/tomato">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSigPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:backgroundTint="@color/light_tomato"
+                        android:paddingTop="3dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/tomato" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="52dp"
+                android:layout_marginTop="18.7dp"
+                android:background="@color/tomato">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSignup"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="Sign up"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Have an account ?"
+                    android:textColor="@color/tomato"
+                    android:textSize="10.5sp" />
+
+                <TextView
+                    android:id="@+id/tvReLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="LOGIN"
+                    android:textColor="@color/tomato"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</RelativeLayout>
