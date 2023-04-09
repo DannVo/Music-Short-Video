@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButt = findViewById(R.id.btnLogin);
         reRegis = findViewById(R.id.tvRegis);
         tlUsername = findViewById(R.id.tlUsername);
-        tlPass = findViewById(R.id.tlPass);
+        tlPass = findViewById(R.id.tlPassword);
 
         tlUsername.setOnClickListener(view -> tlUsername.setHintEnabled(false));
         loginPass.setOnClickListener(view -> tlPass.setHintEnabled(false));
