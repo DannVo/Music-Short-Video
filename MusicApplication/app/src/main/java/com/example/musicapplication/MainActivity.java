@@ -12,15 +12,23 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.musicapplication.Login.LoginActivity;
+import com.example.musicapplication.StatePattern.PremiumUser;
+import com.example.musicapplication.StatePattern.Short;
+import com.example.musicapplication.StatePattern.User;
 import com.example.musicapplication.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    FloatingActionButton btn;
     ActivityMainBinding activityMainBinding;
     boolean doubleBackToExitPressedOnce = false;
 
@@ -28,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String userID = "userID";
     public static final String fileName = "login";
     public static final String userName = "username";
+    public static final String signUpName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +47,35 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
 
+        btn = (FloatingActionButton) findViewById(R.id.add);
+
         sharedPreferences = getSharedPreferences(fileName, Context.MODE_PRIVATE);
 
         if (sharedPreferences.contains(userName)){
             Toast.makeText(MainActivity.this, "Welcome back, "+sharedPreferences.getString(userName,"")+"!", Toast.LENGTH_SHORT).show();
         }
 
+
+
         replaceFragment(new HomeFragment());
         activityMainBinding.bottomNaviView.setBackground(null);
-
 
         activityMainBinding.bottomNaviView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.home:
+                    if (sharedPreferences.getString(userName,"").equals("danh123")){
+                        User user = new User();
+                        user.setState(new PremiumUser());
+                        user.setBtn(btn);
+                        user.applyState();
+                    }
                     replaceFragment(new HomeFragment());
                     break;
                 case R.id.shorts:
+                    User user = new User();
+                    user.setState(new Short());
+                    user.setBtn(btn);
+                    user.applyState();
                     replaceFragment(new MainShortFragment());
                     break;
                 case R.id.subscription:

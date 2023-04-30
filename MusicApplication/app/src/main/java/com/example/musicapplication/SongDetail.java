@@ -30,6 +30,9 @@ import android.widget.Toast;
 import com.example.musicapplication.Adapter.ObjectSerializer;
 import com.example.musicapplication.Adapter.SongAdapter;
 import com.example.musicapplication.Model.SongItem;
+import com.example.musicapplication.StrategyPattern.SkipButton;
+import com.example.musicapplication.StrategyPattern.SkipNextSongButton;
+import com.example.musicapplication.StrategyPattern.SkipPreviousSongButton;
 import com.example.musicapplication.databinding.ActivityMainBinding;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.MediaMetadata;
@@ -119,7 +122,7 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
         }
 
         player = new ExoPlayer.Builder(this).build();
-        Toast.makeText(this, "This is posi "+ position+" "+isPlayingSong, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "This is posi "+ position+" "+isPlayingSong, Toast.LENGTH_SHORT).show();
 
         //play mp3 file
 //        if(!player.isPlaying() && isPlayingSong == 0){
@@ -134,14 +137,14 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
 //            player.setMediaItems(getMediaItems(), position, 0);
 //            isPlayingSong = 1;
 //        }
-        Toast.makeText(this, "Pause 1", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Pause 1", Toast.LENGTH_SHORT).show();
         player.setMediaItems(getMediaItems(), position, 0);
         isPlayingSong = 1;
         player.prepare();
         player.play();
 
         songItem = (SongItem) intent.getSerializableExtra("songdata");
-        Toast.makeText(SongDetail.this, "Song Playing "+songItem.getTitle(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SongDetail.this, "Song Playing "+songItem.getTitle(), Toast.LENGTH_SHORT).show();
 //        playerControls();
 
         //song name marque
@@ -150,10 +153,10 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
         player.addListener(new Player.Listener() {
             @Override
             public void onEvents(Player player, Player.Events events) {
-                Toast.makeText(SongDetail.this, "Check Curr "+songItem.getTitle(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SongDetail.this, "Check Curr "+songItem.getTitle(), Toast.LENGTH_SHORT).show();
 //                storeCurrSong(songItem.getTitle(),songItem.getAuthor(), songItem.getDuration(), songItem.getArtwork_uri());
                 Player.Listener.super.onEvents(player, events);
-                Toast.makeText(SongDetail.this, "onEvents", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SongDetail.this, "onEvents", Toast.LENGTH_SHORT).show();
 
 //                SongAdapter songAdapter = new SongAdapter();
 //                tvTitle.setSelected(true);
@@ -173,7 +176,7 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
                 Player.Listener.super.onMediaItemTransition(mediaItem, reason);
 
                 assert mediaItem !=null;
-                Toast.makeText(SongDetail.this, "onMedia", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SongDetail.this, "onMedia", Toast.LENGTH_SHORT).show();
                 tvTitle.setSelected(true);
 
                 playerTitle.setText(mediaItem.mediaMetadata.title+" - "+mediaItem.mediaMetadata.artist);
@@ -198,7 +201,7 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
                         songItem.getArtwork_uri());
                 updatePositionProgress();
                 if(!player.isPlaying()){
-                    Toast.makeText(SongDetail.this, "Play and Pause", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SongDetail.this, "Play and Pause", Toast.LENGTH_SHORT).show();
                     playPauseBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_play_circle_outline_38,0 ,0 ,0 );
                     player.play();
                 }
@@ -211,7 +214,7 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
                 Player.Listener.super.onPlaybackStateChanged(playbackState);
 
                 if(playbackState == ExoPlayer.STATE_READY){
-                    Toast.makeText(SongDetail.this, "onPlayback1", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SongDetail.this, "onPlayback1", Toast.LENGTH_SHORT).show();
                     playerTitle.setText(Objects.requireNonNull(player.getCurrentMediaItem()).mediaMetadata.title+
                             " - "+Objects.requireNonNull(player.getCurrentMediaItem()).mediaMetadata.artist);
 
@@ -236,12 +239,12 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
 
                     updatePositionProgress();
                     if(!player.isPlaying()){
-                        Toast.makeText(SongDetail.this, "Play and Pause2", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SongDetail.this, "Play and Pause2", Toast.LENGTH_SHORT).show();
                         playPauseBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_play_circle_outline_38,0 ,0 ,0 );
 
                     }
                 }else{
-                    Toast.makeText(SongDetail.this, "onPlayback2", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SongDetail.this, "onPlayback2", Toast.LENGTH_SHORT).show();
                     playerTitle.setText(Objects.requireNonNull(player.getCurrentMediaItem()).mediaMetadata.title+
                             " - "+Objects.requireNonNull(player.getCurrentMediaItem()).mediaMetadata.artist);
 
@@ -266,12 +269,33 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
                 }
             }
         });
+        skipNextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         //Skip next track
+        /*
         skipNextBtn.setOnClickListener(view -> skipNextSong());
 
         //Skip previous track
         skipPrevBtn.setOnClickListener(view -> skipPrevSong());
+        */
+        skipNextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SkipButton skipNext = new SkipNextSongButton();
+                skipNext.skipSong(player);
+            }
+        });
+        skipPrevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SkipButton skipPrevious = new SkipPreviousSongButton();
+                skipPrevious.skipSong(player);
+            }
+        });
 
         //Play Or Pause
         playPauseBtn.setOnClickListener(view -> playOrPause());
@@ -346,7 +370,7 @@ public class SongDetail extends AppCompatActivity implements Player.Listener{
         //store in sharedReference
         sharedPreferences = getSharedPreferences("curr_player_song", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        Toast.makeText(this, title+" "+author, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, title+" "+author, Toast.LENGTH_SHORT).show();
         editor.putString("CurrTitle", title);
         editor.putString("CurrAuthor", author);
         editor.putString("CurrDura", duration.toString());

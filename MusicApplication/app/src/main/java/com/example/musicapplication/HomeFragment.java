@@ -1,7 +1,10 @@
 package com.example.musicapplication;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,7 +27,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -37,6 +43,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.chibde.visualizer.BarVisualizer;
 import com.example.musicapplication.Adapter.SongAdapter;
+import com.example.musicapplication.BuilderPattern.Notification;
+import com.example.musicapplication.BuilderPattern.NotificationBuilder;
+import com.example.musicapplication.BuilderPattern.NotificationConcreteBuilder;
+import com.example.musicapplication.Login.LoginActivity;
 import com.example.musicapplication.Model.SongItem;
 import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -61,10 +71,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickListener, SongAdapter.songOnClick, SwipeRefreshLayout.OnRefreshListener{
 
+    LinearLayout linearLayout;
     RecyclerView recyclerView;
     ShimmerFrameLayout shimmerFrameLayout;
     ImageView editSong, testbtn, homeSongArtWorkView;
-    TextView title, authorName, duraTime;
+    TextView title, authorName, duraTime, titleDialog, contentDialog;
+    Button btnSuccess, btnDanger;
     Context context;
     ConstraintLayout clLayoutSong;
     SongAdapter songAdapter;
@@ -108,7 +120,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     @Override
     public void onResume() {
         int checkRunning = SongDetail.isPlayingSong;
-        Toast.makeText(context, "Is playing " + String.valueOf(checkRunning), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Is playing " + String.valueOf(checkRunning), Toast.LENGTH_SHORT).show();
         homeControlView.setVisibility(View.GONE);
         if(checkRunning == 1){
 
@@ -118,7 +130,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
             String songAuthor = sharedPreferences.getString("CurrAuthor", "");
             String songArtwork = sharedPreferences.getString("CurrArtwork", "");
             String songDuration = sharedPreferences.getString("CurrDura", "");
-            Toast.makeText(context, "Song curr "+ songName, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Song curr "+ songName, Toast.LENGTH_SHORT).show();
             homeSongNameView.setText(trimSongName(songName));
             homeSongAuthorView.setText(trimSongAuthor(songAuthor));
             loadImage(songArtwork, homeSongArtWorkView);
@@ -158,7 +170,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
                     startActivity(new Intent(getActivity(),SongDetail.class));
                     SongDetail.isPlayingSong = 0;
                 }
-                Toast.makeText(context, "Test Button", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Test SkipButton", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -339,7 +351,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -502,7 +514,7 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
 
 //        reference.child("test").setValue("97889789789789");
 
-        Toast.makeText(getActivity(),"You have create default songs!",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),"You have create default songs!",Toast.LENGTH_SHORT).show();
     }
 
     public String generateSongID(String title, String album){
@@ -590,10 +602,17 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         homeSkipNextBtn = view.findViewById(R.id.homeSkipNextBtn);
         homeCloseBtn = view.findViewById(R.id.homeCloseBtn);
 
+        linearLayout = view.findViewById(R.id.Dialog);
+        titleDialog = view.findViewById(R.id.titleDialog);
+        contentDialog = view.findViewById(R.id.contentDialog);
+        btnDanger = view.findViewById(R.id.btn_danger);
+        btnSuccess = view.findViewById(R.id.btn_success);
     }
 
     public void showPopup(View v){
         PopupMenu popupMenu = new PopupMenu(getActivity(), v);
+
+
         popupMenu.setOnMenuItemClickListener(this);
         popupMenu.inflate(R.menu.popup_profile_icon);
         popupMenu.show();
@@ -603,13 +622,38 @@ public class HomeFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.item1:
-                Toast.makeText(this.getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item2:
-                Toast.makeText(this.getActivity(), "Item 2 clicked", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item3:
-                Toast.makeText(this.getActivity(), "Item 3 clicked", Toast.LENGTH_SHORT).show();
+                titleDialog.setText("Logout alert");
+                contentDialog.setText("Are you sure, you want to log out ?");
+                btnSuccess.setText("YES");
+                btnDanger.setText("NO");
+
+                NotificationBuilder notificationBuilder = new NotificationConcreteBuilder()
+                        .setTitle(titleDialog)
+                        .setContent(contentDialog)
+                        .setbtnSuccess(btnSuccess)
+                        .setbtnDanger(btnDanger);
+
+                notificationBuilder.create();
+                linearLayout.setVisibility(View.VISIBLE);
+
+                notificationBuilder.getBtnSuccess().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("h","Successfully");
+                        //Toast.makeText(this.getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                notificationBuilder.getBtnDanger().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("h","Danger");
+                        //Toast.makeText(this.getActivity(), "Item 1 clicked", Toast.LENGTH_SHORT).show();
+                        linearLayout.setVisibility(View.GONE);
+                    }
+                });
                 return true;
             default:
                 return false;

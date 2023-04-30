@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.musicapplication.Model.SongItem;
 import com.example.musicapplication.R;
+import com.example.musicapplication.SingletonPattern.MediaPlayerSingleton;
 import com.example.musicapplication.SongDetail;
 import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerDrawable;
@@ -98,7 +99,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
                 .into(holder.artSong);
 
         //get duration
-        MediaPlayer mp = new MediaPlayer();
+        //MediaPlayer mp = new MediaPlayer();
+        MediaPlayerSingleton mps = MediaPlayerSingleton.getInstance();
         try {
 //            if (mp.isPlaying() || SongDetail.isPlayingSong == 1) {
 //                mp.stop();
@@ -107,9 +109,9 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 //                Toast.makeText(context, "MP stopped", Toast.LENGTH_SHORT).show();
 //            }
             Log.e("Song Uri ",songItem.getSong_uri());
-            mp.reset();
-            mp.setDataSource(songItem.getSong_uri());
-            mp.prepare();
+            mps.mp.reset();
+            mps.mp.setDataSource(songItem.getSong_uri());
+            mps.mp.prepare();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,7 +132,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
         //load from source
         viewHolder.title.setText(songItem.getTitle());
         viewHolder.author.setText(songItem.getAuthor());
-        viewHolder.duration.setText(String.valueOf(convertDuration(mp.getDuration())));
+        viewHolder.duration.setText(String.valueOf(convertDuration(mps.mp.getDuration())));
 //        Log.e("Duration ",String.valueOf(mp.getDuration()));
 
         String artWorkSong = songItem.getArtwork_uri();
@@ -151,8 +153,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
                         SongDetail.isPlayingSong =2;
                         SongDetail.stopMusic();
                     }
-                    Toast.makeText(context, "Playing " + viewHolder.title.getText() +"...", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(context, "Test Num " + SongDetail.isPlayingSong, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Playing " + viewHolder.title.getText() +"...", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Test Num " + SongDetail.isPlayingSong, Toast.LENGTH_SHORT).show();
                     selectSong.songOnClick(songs.get(temp));
                     //store in sharedReference
                     sharedPreferences = context.getSharedPreferences("player_song", Context.MODE_PRIVATE);

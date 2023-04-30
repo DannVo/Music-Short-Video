@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String userID = "userID";
     public static final String fileName = "login";
     public static final String userName = "username";
+    //public Query checkUserDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,10 +139,8 @@ public class LoginActivity extends AppCompatActivity {
     public void checkDBUser(){
         String username = loginUsername.getText().toString();
         String password = loginPass.getText().toString();
-
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("user_account");
         Query checkUserDB = databaseReference.orderByChild("username").equalTo(username);
-
         checkUserDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
